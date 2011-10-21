@@ -4,11 +4,11 @@ def conclusion():
     print "You are looking at the huge stone slab that stands between you and your initiation as a Warrior of the Novos."
     bomb_planted = False
     fuse_lit = False
-    
+
     while True:
-        
+
         next = raw_input("> ")
-        
+
         if "plant" in next and "bomb" in next:
             print "The bomb has been planted."
             bomb_planted = True
@@ -20,7 +20,7 @@ def conclusion():
             win("They cheer as you emerge triumphant, one of them.")
         else:
             print "You're so close."
-    
+
 
 def torches():
     print "There are three unlit torches numbered 1 through 3 in the middle of the room."
@@ -30,10 +30,10 @@ def torches():
     torch_one = False
     torch_two = False
     torch_three = False
-    
+
     while not torch_grabbed:
         next = raw_input("> ")
-        
+
         if next == "take torch":
             print "You grab the torch from the wall."
             torch_grabbed = True
@@ -41,10 +41,10 @@ def torches():
             print "The door won't budge."
         else:
             print "You might want to start by taking the torch off the wall."
-    
+
     while not torch_two:
         next = raw_input("> ")
-        
+
         if "light" in next and "three" in next and not torch_three:
             print "You successfully light the torch."
             torch_three = True
@@ -55,7 +55,7 @@ def torches():
         elif "light" in next and "two" in next and torch_one:
             print "You successfully light the torch."
             print "The door suddenly opens."
-            torch_two = True           
+            torch_two = True
         elif "light" in next and "1" in next or "one" in next and not torch_three:
             print "The torch won't stay lit for more than a few seconds."
         elif "light" in next and "1" in next or "one" in next and torch_three:
@@ -63,21 +63,21 @@ def torches():
             torch_one = True
         else:
             print "Maybe you should try lighting the torches."
-    
+
     print "You proceed through the door and find yourself in the room you started in. Only now you have a bomb and a lit torch."
     conclusion()
 
 def bomb():
     print "The only thing in this room is a bomb is sitting on a table."
-    
+
     next = raw_input("> ")
-   
+
     if "take" in next and "bomb" in next:
         print "You have picked up the bomb. You proceed to the next room."
         torches()
     else:
         print "Come on man."
-        bomb()           
+        bomb()
 
 def elites():
     print "KABOOM! Debris flies past you as a hole opens up in the far wall."
@@ -88,10 +88,10 @@ def elites():
         initiated = False
         parried = False
         gnoll_death = False
-        
+
         while not gnoll_death:
             next = raw_input("> ")
-        
+
             if "attack" in next and not parried:
                 print "The gnoll parries your blow and takes a swing."
                 initiated = True
@@ -105,11 +105,11 @@ def elites():
                 parried = True
             else:
                 dead("In one swift and graceful motion, the gnoll imaples your throat with his rapier.")
-    
+
     print "Beyond the hole in the wall, you see another room. Would you like to save your progress? (y/n)"
-    
+
     next = raw_input("> ")
-    
+
     if next == "y":
         print "Yeah... alright... the game's saved now..."
         bomb()
@@ -127,28 +127,28 @@ def dardon():
     dardon_hp = range(0,5)
     exposed = False
     for i in dardon_hp:
-        
+
         next = raw_input("> ")
-        
+
         if "attack" in next and not exposed:
             dead("You attempt to attack dardon's massive skull with your rapier. The blade snaps immediately, as does every bone in your body.")
         elif next == "dodge" and not exposed:
-            print "You dodge the beast's charge! He exposes his fleshy backside!"       
-            exposed = True   
+            print "You dodge the beast's charge! He exposes his fleshy backside!"
+            exposed = True
         elif "attack" in next and exposed:
             print "You pierce the beast with your rapier. He lets out a hideous shriek and turns around. He's charging again!"
             exposed = False
         elif next == "dodge" and exposed:
-            dead("Unsatisfied with your successful dodge you perform another, giving dardon time to turn around and charge you again. His massive skull crushes every bone in your body.")        
+            dead("Unsatisfied with your successful dodge you perform another, giving dardon time to turn around and charge you again. His massive skull crushes every bone in your body.")
         else:
             dead("As you bumble about, the beast collides into you. His massive skull crushes every bone in your body.")
     next = raw_input("> ")
-    
+
     if "attack" in next:
         print "You pierce the beast with your rapier. Letting out one last pathetic roar, he collapses."
         elites()
     else:
-        dead("The dardon spins around wildly, knocking your head clean off.")      
+        dead("The dardon spins around wildly, knocking your head clean off.")
 
 def henchmen():
     print "A goblin and bugbear stand behind him, somewhat unsure of themselves."
@@ -156,24 +156,24 @@ def henchmen():
 
     for i in enemies:
         print "The %s steps forward and looks around nervously." % i
-        
+
         next = raw_input("> ")
-        
+
         if next == "attack %s" % i:
             print "The %s's lifeless body falls to the ground." % i
         else:
             dead("The %s collects himself, takes a mighty swing and caves your head in." % i)
     print "Beyond the pile of your foes' pathetic corpses, you see a door."
-    
+
     next = raw_input("> ")
-    
+
     if next == "open door":
         print "You enter the next room."
         dardon()
     else:
         print "You reconsider and enter the next room instead."
         dardon()
-        
+
 
 def armory():
     print "This room is an armory."
@@ -181,10 +181,10 @@ def armory():
     print "There is a door in front of you."
     armed = False
     armored = False
-    
+
     while True:
         next = raw_input("> ")
-        
+
         if "take" in next and "weapon" in next and not armed:
             print "You take a rapier from the rack and equip it."
             armed = True
@@ -209,10 +209,10 @@ def immolation():
     print "Some of the bricks in the wall are coming loose."
     brick_taken = False
     brick_thrown = False
-    
+
     while True:
         next = raw_input("> ")
-        
+
         if next == "take brick" and not brick_taken:
             print "You pry a brick loose from the wall."
             brick_taken = True
@@ -230,25 +230,25 @@ def immolation():
             dead("You mosey on down the hallway and step on the pressure plate. A stream of flame erupts and immolates you.")
         else:
             print "You look around nervously."
-    
+
 def vine_pit():
     print "You walk through the door and stand before a spiked pit."
     print "A vine hangs down from the ceiling in front of you."
-    
+
     next = raw_input("> ")
-        
+
     if "swing" in next or "vine" in next:
         print "You take hold of the vine and swing across the pit."
         immolation()
     else:
-        dead("You slip and fall into the pit. Needles impale your body from head to toe.")    
+        dead("You slip and fall into the pit. Needles impale your body from head to toe.")
 
 def entrance():
     print "You walk through the door into a small chamber."
     print "There are doors to your left and right."
     while True:
         next = raw_input("> ")
-        
+
         if "left" in next:
             print "The door won't budge."
         elif "right" in next:
@@ -259,11 +259,11 @@ def entrance():
 def intro():
     """Introduction to the game."""
     print """You enter the Cavern of Rhama. An enormous stone slab falls from the ceiling behind you and shuts you in. If you manage to navigate this treacherous place, you will join the ranks of the mighty Novos warriors. If not, you will surely find great company in the other corpses that litter the cavern floors. The only way to go is a door in front of you.
-    
+
     Proceed? (y/n)"""
-    
+
     next = raw_input("> ")
-    
+
     if next == "y":
         entrance()
     elif next == "n":
@@ -279,5 +279,5 @@ def dead(why):
 def win(why):
     print why
     exit(0)
-    
+
 intro()
